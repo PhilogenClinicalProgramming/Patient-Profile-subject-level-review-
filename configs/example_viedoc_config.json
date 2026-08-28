@@ -1,0 +1,266 @@
+{
+  "base_path": "examples/synthetic_viedoc",
+  "study_id": "SYNTHETIC_STUDY_B",
+  "edc_system": "Viedoc-like",
+  "snapshot_datetime": "2026-01-01 00:00:00",
+  "snapshot_source": "synthetic example",
+  "code_version": "public-v0.1",
+  "config_version": "example_viedoc_config_public_v0.1",
+  "data_model_version": "1.0",
+  "datasets": {
+    "vs": {
+      "file": "viedoc_vs.csv",
+      "sep": ",",
+      "read_mode": "viedoc_double_header"
+    },
+    "ae": {
+      "file": "viedoc_ae.csv",
+      "sep": ",",
+      "read_mode": "viedoc_double_header"
+    },
+    "lbcc": {
+      "file": "viedoc_lbcc.csv",
+      "sep": ",",
+      "read_mode": "viedoc_double_header"
+    }
+  },
+  "tables": {
+    "subject_master": {
+      "source": "vs",
+      "deduplicate_on": [
+        "subject_id"
+      ],
+      "columns": {
+        "subject_id": {
+          "source": [
+            "SubjectId"
+          ],
+          "required": true
+        },
+        "site_id": {
+          "source": [
+            "SiteCode",
+            "SiteSeq"
+          ]
+        },
+        "country": {
+          "constant": "Synthetic"
+        },
+        "treatment_group": {
+          "constant": "Not mapped"
+        },
+        "study_part": {
+          "constant": "Not mapped"
+        },
+        "sex": {},
+        "age": {},
+        "race": {},
+        "ethnicity": {},
+        "enrollment_date": {}
+      }
+    },
+    "visit_status": {
+      "sources": [
+        "vs"
+      ],
+      "deduplicate_on": [
+        "subject_id",
+        "visit_name",
+        "visit_date"
+      ],
+      "source_overrides": {
+        "vs": {
+          "visit_format": "viedoc"
+        }
+      },
+      "columns": {
+        "subject_id": {
+          "source": [
+            "SubjectId"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "EventName"
+          ],
+          "required": true
+        },
+        "visit_order": {
+          "source": [
+            "VISIT_ORDER_DERIVED"
+          ]
+        },
+        "visit_date": {
+          "source": [
+            "VISIT_DATE_DERIVED"
+          ]
+        },
+        "visit_status": {
+          "source": [
+            "VISIT_STATUS_DERIVED"
+          ]
+        },
+        "expected_flag": {
+          "constant": "Yes"
+        },
+        "performed_flag": {
+          "source": [
+            "PERFORMED_FLAG_DERIVED"
+          ]
+        },
+        "optional_flag": {
+          "source": [
+            "OPTIONAL_FLAG_DERIVED"
+          ]
+        },
+        "not_done_reason": {
+          "source": [
+            "NOT_DONE_REASON_DERIVED"
+          ]
+        }
+      }
+    },
+    "adverse_events": {
+      "source": "ae",
+      "deduplicate_on": [
+        "subject_id",
+        "ae_id",
+        "ae_term",
+        "start_date"
+      ],
+      "columns": {
+        "subject_id": {
+          "source": [
+            "SubjectId"
+          ],
+          "required": true
+        },
+        "ae_id": {
+          "source": [
+            "AESEQ"
+          ]
+        },
+        "ae_term": {
+          "source": [
+            "AETERM"
+          ],
+          "required": true
+        },
+        "start_date": {
+          "parsed_date": "AESTDAT"
+        },
+        "end_date": {
+          "parsed_date": "AEENDAT"
+        },
+        "ongoing_flag": {
+          "source": [
+            "AEONGO"
+          ],
+          "normalize_flag": true
+        },
+        "grade": {
+          "source": [
+            "AETOXGR"
+          ]
+        },
+        "serious_flag": {
+          "source": [
+            "AESER"
+          ],
+          "normalize_flag": true
+        },
+        "relatedness_as_recorded": {
+          "source": [
+            "AEREL"
+          ]
+        },
+        "outcome": {
+          "source": [
+            "AEOUT"
+          ]
+        }
+      }
+    },
+    "laboratory_measurements": {
+      "sources": [
+        "lbcc"
+      ],
+      "source_overrides": {
+        "lbcc": {
+          "lab_format": "viedoc_wide",
+          "panel": "Clinical chemistry",
+          "sample_prefix": "CC",
+          "prefixes": [
+            "ALT",
+            "AST",
+            "BILI"
+          ]
+        }
+      },
+      "columns": {
+        "subject_id": {
+          "source": [
+            "SubjectId"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "EventName"
+          ],
+          "required": true
+        },
+        "assessment_date": {
+          "parsed_date": "LBDAT"
+        },
+        "panel": {
+          "source": [
+            "ANL_LBCAT"
+          ]
+        },
+        "parameter": {
+          "source": [
+            "ANL_LBTEST"
+          ],
+          "required": true
+        },
+        "result_value": {
+          "source": [
+            "ANL_LBORRESNUM",
+            "ANL_LBORRESTXT"
+          ]
+        },
+        "result_unit": {
+          "source": [
+            "ANL_LBORRESU"
+          ]
+        },
+        "normal_low": {
+          "source": [
+            "ANL_LBORRESRNR_Lower"
+          ]
+        },
+        "normal_high": {
+          "source": [
+            "ANL_LBORRESRNR_Upper"
+          ]
+        },
+        "normal_range_source": {
+          "constant": "viedoc_export"
+        },
+        "abnormal_flag": {
+          "source": [
+            "ABNORMAL_FLAG_DERIVED"
+          ]
+        },
+        "clinically_significant_flag": {
+          "source": [
+            "ANL_LBCLSIG"
+          ],
+          "normalize_flag": true
+        }
+      }
+    }
+  }
+}

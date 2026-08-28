@@ -1,0 +1,399 @@
+{
+  "base_path": "examples/synthetic_pheedit",
+  "study_id": "SYNTHETIC_STUDY_A",
+  "edc_system": "PheedIt-like",
+  "snapshot_datetime": "2026-01-01 00:00:00",
+  "snapshot_source": "synthetic example",
+  "code_version": "public-v0.1",
+  "config_version": "example_pheedit_config_public_v0.1",
+  "data_model_version": "1.0",
+  "datasets": {
+    "dm": {
+      "file": "dm.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "sv": {
+      "file": "sv.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "ae": {
+      "file": "ae.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "lb": {
+      "file": "lb.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "treatment_1": {
+      "file": "treatment_1.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "rs": {
+      "file": "rs.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "tpg": {
+      "file": "tpg.csv",
+      "header": 0,
+      "sep": ","
+    },
+    "ovsr": {
+      "file": "ovsr.csv",
+      "header": 0,
+      "sep": ","
+    }
+  },
+  "tables": {
+    "subject_master": {
+      "source": "dm",
+      "deduplicate_on": [
+        "subject_id"
+      ],
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "site_id": {
+          "source": [
+            "site_id"
+          ]
+        },
+        "country": {
+          "constant": "Synthetic"
+        },
+        "treatment_group": {
+          "source": [
+            "treatment_group"
+          ]
+        },
+        "study_part": {
+          "source": [
+            "study_part"
+          ]
+        },
+        "sex": {
+          "source": [
+            "sex"
+          ]
+        },
+        "age": {
+          "source": [
+            "age"
+          ]
+        },
+        "race": {
+          "source": [
+            "race"
+          ]
+        },
+        "ethnicity": {
+          "source": [
+            "ethnicity"
+          ]
+        },
+        "enrollment_date": {
+          "parsed_date": "enrollment_date"
+        }
+      }
+    },
+    "visit_status": {
+      "source": "sv",
+      "deduplicate_on": [
+        "subject_id",
+        "visit_name",
+        "visit_date"
+      ],
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "VISIT"
+          ],
+          "required": true
+        },
+        "visit_order": {
+          "source": [
+            "VISIT_ORDER_DERIVED"
+          ]
+        },
+        "visit_date": {
+          "source": [
+            "VISIT_DATE_DERIVED"
+          ]
+        },
+        "visit_status": {
+          "source": [
+            "VISIT_STATUS_DERIVED"
+          ]
+        },
+        "expected_flag": {
+          "constant": "Yes"
+        },
+        "performed_flag": {
+          "source": [
+            "PERFORMED_FLAG_DERIVED"
+          ]
+        },
+        "optional_flag": {
+          "source": [
+            "OPTIONAL_FLAG_DERIVED"
+          ]
+        },
+        "not_done_reason": {
+          "source": [
+            "NOT_DONE_REASON_DERIVED"
+          ]
+        }
+      }
+    },
+    "treatment_administration": {
+      "source": "treatment_1",
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "visit_name"
+          ]
+        },
+        "drug_name": {
+          "constant": "Study treatment"
+        },
+        "administration_date": {
+          "parsed_date": "administration_date"
+        },
+        "dose": {
+          "source": [
+            "dose"
+          ]
+        },
+        "dose_unit": {
+          "source": [
+            "dose_unit"
+          ]
+        },
+        "administered_flag": {
+          "source": [
+            "administered_flag"
+          ],
+          "normalize_flag": true
+        }
+      }
+    },
+    "adverse_events": {
+      "source": "ae",
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "ae_id": {
+          "source": [
+            "ae_id"
+          ]
+        },
+        "ae_term": {
+          "source": [
+            "ae_term"
+          ],
+          "required": true
+        },
+        "start_date": {
+          "parsed_date": "start_date"
+        },
+        "end_date": {
+          "parsed_date": "end_date"
+        },
+        "ongoing_flag": {
+          "source": [
+            "ongoing_flag"
+          ],
+          "normalize_flag": true
+        },
+        "grade": {
+          "source": [
+            "grade"
+          ]
+        },
+        "serious_flag": {
+          "source": [
+            "serious_flag"
+          ],
+          "normalize_flag": true
+        },
+        "relatedness_as_recorded": {
+          "source": [
+            "relatedness"
+          ]
+        },
+        "outcome": {
+          "source": [
+            "outcome"
+          ]
+        },
+        "concomitant_treatment_flag": {
+          "source": [
+            "concomitant_treatment_flag"
+          ],
+          "normalize_flag": true
+        }
+      }
+    },
+    "laboratory_measurements": {
+      "source": "lb",
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "visit_name"
+          ]
+        },
+        "assessment_date": {
+          "source": [
+            "assessment_date"
+          ]
+        },
+        "panel": {
+          "source": [
+            "panel"
+          ]
+        },
+        "parameter": {
+          "source": [
+            "parameter"
+          ],
+          "required": true
+        },
+        "result_value": {
+          "source": [
+            "result_value"
+          ]
+        },
+        "result_unit": {
+          "source": [
+            "result_unit"
+          ]
+        },
+        "normal_low": {
+          "source": [
+            "normal_low"
+          ]
+        },
+        "normal_high": {
+          "source": [
+            "normal_high"
+          ]
+        },
+        "normal_range_source": {
+          "constant": "synthetic"
+        },
+        "abnormal_flag": {
+          "source": [
+            "abnormal_flag"
+          ]
+        },
+        "clinically_significant_flag": {
+          "source": [
+            "clinically_significant_flag"
+          ],
+          "normalize_flag": true
+        }
+      }
+    },
+    "overall_tumor_response": {
+      "source": "rs",
+      "deduplicate_on": [
+        "subject_id",
+        "visit_name",
+        "overall_response"
+      ],
+      "columns": {
+        "subject_id": {
+          "source": [
+            "subject_id"
+          ],
+          "required": true
+        },
+        "visit_name": {
+          "source": [
+            "VISIT"
+          ],
+          "required": true
+        },
+        "assessment_date": {
+          "source": [
+            "assessment_date"
+          ]
+        },
+        "target_response": {
+          "source": [
+            "target_response"
+          ]
+        },
+        "non_target_response": {
+          "source": [
+            "non_target_response"
+          ]
+        },
+        "new_lesion_progression": {
+          "source": [
+            "new_lesion_progression"
+          ],
+          "normalize_flag": true
+        },
+        "overall_response": {
+          "source": [
+            "overall_response"
+          ]
+        },
+        "reason_not_assessed": {
+          "source": [
+            "reason_not_assessed"
+          ]
+        }
+      }
+    },
+    "end_of_study_status": {
+      "source": "tpg"
+    },
+    "overall_survival": {
+      "source": "ovsr",
+      "deduplicate_on": [
+        "subject_id",
+        "last_contact_date",
+        "death_date",
+        "vital_status"
+      ]
+    },
+    "patient_status_summary": {
+      "subject_dataset": "dm",
+      "survival_dataset": "ovsr",
+      "end_of_study_dataset": "tpg"
+    }
+  }
+}

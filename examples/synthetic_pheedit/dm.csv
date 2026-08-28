@@ -1,0 +1,3 @@
+subject_id,site_id,treatment_group,study_part,sex,age,race,ethnicity,enrollment_date,patno_ref,PATNO
+SUBJ-001,SITE-01,Arm A,Phase 2,F,58,White,Not Hispanic or Latino,2026-01-03,SUBJ-001,SUBJ-001
+SUBJ-002,SITE-02,Arm A,Phase 2,M,63,Asian,Not reported,2026-01-05,SUBJ-002,SUBJ-002

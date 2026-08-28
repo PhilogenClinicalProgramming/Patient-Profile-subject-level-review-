@@ -1,0 +1,3 @@
+subject_id,ae_id,ae_term,start_date,end_date,ongoing_flag,grade,serious_flag,relatedness,outcome,concomitant_treatment_flag
+SUBJ-001,AE-001,Headache,2026-01-11,2026-01-12,No,1,No,Not related,Recovered,No
+SUBJ-001,AE-002,Alanine aminotransferase increased,2026-01-25,,Yes,2,No,Related,Not recovered,No

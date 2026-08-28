@@ -1,0 +1,3 @@
+subject_id,visit_name,assessment_date,panel,parameter,result_value,result_unit,normal_low,normal_high,abnormal_flag,clinically_significant_flag
+SUBJ-001,SCREENING EVALUATION,2026-01-03,Chemistry,ALT,28,U/L,0,40,Normal,No
+SUBJ-001,TREAT. PER. C01 D15_21,2026-01-25,Chemistry,ALT,80,U/L,0,40,High,Yes

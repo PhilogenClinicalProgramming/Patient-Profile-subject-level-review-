@@ -1,0 +1,4 @@
+﻿Site sequence number,Site name,Site code,Subject sequence number,Subject Id,Event sequence number,Event Id,Event name,Event date,Activity Id,Activity name,Performed?,Reason not performed
+SiteSeq,SiteName,SiteCode,SubjectSeq,SubjectId,EventSeq,EventId,EventName,EventDate,ActivityId,ActivityName,VSPERF,VSREASND
+1,Synthetic site,SYN-01,1,V-SUBJ-001,1,E01,Screening,2026-01-03,VS,Vitals,Yes,
+1,Synthetic site,SYN-01,1,V-SUBJ-001,2,E02,Cycle 1 Day 01,2026-01-10,VS,Vitals,Yes,

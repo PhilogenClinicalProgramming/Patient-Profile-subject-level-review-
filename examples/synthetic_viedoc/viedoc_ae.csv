@@ -1,0 +1,3 @@
+﻿Site sequence number,Site name,Site code,Subject sequence number,Subject Id,Event sequence number,Event Id,Event name,Event date,AE sequence,Adverse event term,Start date,End date,Ongoing,Grade,Serious,Relatedness,Outcome
+SiteSeq,SiteName,SiteCode,SubjectSeq,SubjectId,EventSeq,EventId,EventName,EventDate,AESEQ,AETERM,AESTDAT,AEENDAT,AEONGO,AETOXGR,AESER,AEREL,AEOUT
+1,Synthetic site,SYN-01,1,V-SUBJ-001,1,COMMON_AE,Adverse Events,2026-01-11,1,Nausea,2026-01-11,2026-01-12,No,1,No,Related,Recovered
