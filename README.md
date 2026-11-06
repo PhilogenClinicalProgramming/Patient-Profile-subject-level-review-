@@ -1,6 +1,6 @@
 # Patient Profile Common Model Framework
 
-This repository contains an anonymized, public example of a configurable Patient Profile framework for clinical trial subject-level review.
+This repository contains a synthetic, publicly available demonstration of a configurable Patient Profile framework for clinical trial subject-level review.
 
 The package demonstrates how heterogeneous electronic data capture (EDC) exports can be transformed into standardized intermediate tables that can then be reused by reporting modules, dashboards, or static subject-level Patient Profile reports.
 
@@ -103,6 +103,3 @@ The generator can create the following standardized intermediate tables, dependi
 
 Only synthetic data are included. Trial-specific raw exports, generated subject-level outputs, and production dashboard/PDF templates should not be shared publicly unless they have been formally approved for disclosure.
 
-## Suggested manuscript wording
-
-The common table generator and anonymized example configuration files are provided as supplementary material. Trial-specific raw exports and generated subject-level Patient Profile outputs are not publicly available because they contain subject-level clinical trial data.
