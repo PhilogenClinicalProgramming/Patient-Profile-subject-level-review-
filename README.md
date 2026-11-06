@@ -99,6 +99,12 @@ The generator can create the following standardized intermediate tables, dependi
 - `generation_log.csv`
 - `mapping_qc.csv`
 
+## License
+
+The source code included in this public demonstration repository is distributed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
+
+The license applies to the publicly available demonstration materials and does not extend to the sponsor's confidential production implementations or clinical trial datasets.
+
 ## Data availability and privacy
 
 Only synthetic data are included. Trial-specific raw exports, generated subject-level outputs, and production dashboard/PDF templates should not be shared publicly unless they have been formally approved for disclosure.
